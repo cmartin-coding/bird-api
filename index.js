@@ -29,7 +29,7 @@ app.get("/get-bird-otd", async (req, res) => {
 
   const randomBird = result.entities[randomBirdIndex];
   console.log("Got the random bird!", randomBird);
-  return randomBird;
+  return JSON.stringify(randomBird);
 });
 
 app.listen(port, () => {
