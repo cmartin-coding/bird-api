@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors({ allowedHeaders: "*" }));
 
 app.get("/get-bird-otd", async (req, res) => {
   let randomPage = Math.floor(Math.random() * 16);
@@ -18,6 +18,7 @@ app.get("/get-bird-otd", async (req, res) => {
     `https://nuthatch.lastelm.software/v2/birds?page=${randomPage}&pageSize=25&hasImg=true`,
     {
       method: "GET",
+
       headers: {
         accept: "application/json",
         "API-Key": process.env["BIRD_API_KEY"],
