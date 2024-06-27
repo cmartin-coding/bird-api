@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.get("/get-bird-otd", async (req, res) => {
-  let randomPage = Math.floor(Math.random() * 41);
+  let randomPage = Math.floor(Math.random() * 16);
   // If it randomly hits 0 just grab first one
   if (randomPage === 0) {
     randomPage = 1;
