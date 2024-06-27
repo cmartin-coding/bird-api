@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors({ origin: "https://www.google.com/" }));
 
 app.get("/get-bird-otd", async (req, res) => {
   let randomPage = Math.floor(Math.random() * 16);
