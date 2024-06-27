@@ -11,7 +11,7 @@ app.get("/get-bird-otd", async (req, res) => {
   }
 
   const response = await fetch(
-    `https://nuthatch.lastelm.software/v2/birds?page=25&pageSize=25&hasImg=true`,
+    `https://nuthatch.lastelm.software/v2/birds?page=${randomPage}&pageSize=25&hasImg=true`,
     {
       method: "GET",
       headers: {
