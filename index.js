@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", async (req, res) => {
+app.get("/get-bird-otd", async (req, res) => {
   let randomPage = Math.floor(Math.random() * 41);
   // If it randomly hits 0 just grab first one
   if (randomPage === 0) {
@@ -21,8 +21,9 @@ app.get("/", async (req, res) => {
     }
   );
 
-  const { entities } = await response.json();
-  const birdsWithImages = entities.filter((bird) => bird.images.length);
+  const result = await response.json();
+  console.log(result, "HERE");
+  const birdsWithImages = result.entities.filter((bird) => bird.images.length);
   const randomBirdIndex = Math.floor(
     Math.random() * birdsWithImages.length + 1
   );
