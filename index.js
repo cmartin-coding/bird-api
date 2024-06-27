@@ -1,7 +1,11 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 app.get("/get-bird-otd", async (req, res) => {
   let randomPage = Math.floor(Math.random() * 16);
