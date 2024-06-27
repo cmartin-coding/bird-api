@@ -11,7 +11,7 @@ app.get("/get-bird-otd", async (req, res) => {
   }
 
   const response = await fetch(
-    `https://nuthatch.lastelm.software/v2/birds?page=${randomPage}&pageSize=25&operator=AND=`,
+    `https://nuthatch.lastelm.software/v2/birds?page=25&pageSize=25&hasImg=true`,
     {
       method: "GET",
       headers: {
@@ -23,12 +23,12 @@ app.get("/get-bird-otd", async (req, res) => {
 
   const result = await response.json();
   console.log(result, "HERE");
-  const birdsWithImages = result.entities.filter((bird) => bird.images.length);
+
   const randomBirdIndex = Math.floor(
-    Math.random() * birdsWithImages.length + 1
+    Math.random() * result.entities.length + 1
   );
 
-  return birdsWithImages[randomBirdIndex];
+  return result.entities[randomBirdIndex];
 });
 
 app.listen(port, () => {
