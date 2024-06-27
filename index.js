@@ -22,13 +22,14 @@ app.get("/get-bird-otd", async (req, res) => {
   );
 
   const result = await response.json();
-  console.log(result, "HERE");
 
   const randomBirdIndex = Math.floor(
     Math.random() * result.entities.length + 1
   );
 
-  return result.entities[randomBirdIndex];
+  const randomBird = result.entities[randomBirdIndex];
+  console.log("Got the random bird", randomBird);
+  return randomBird;
 });
 
 app.listen(port, () => {
